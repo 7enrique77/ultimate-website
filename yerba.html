@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        registrations.forEach(function (registration) { registration.unregister(); });
+      });
+    }
+    if ('caches' in window) {
+      caches.keys().then(function (names) {
+        names.forEach(function (name) { caches.delete(name); });
+      });
+    }
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Yerba | Ultimaté</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="LOGOS/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="LOGOS/favicon-48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="LOGOS/favicon-180.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="meta-pixel.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <button type="button" class="navbar-hamburger" id="navbar-hamburger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="navbar-left">
+      <a class="navbar-link" href="/merch">MERCH</a>
+      <a class="navbar-link" href="/store-locator">STORE LOCATOR</a>
+    </div>
+    <a class="navbar-logo-wrap" href="/">
+      <span class="navbar-logo" role="img" aria-label="Ultimate logo"></span>
+    </a>
+    <div class="navbar-right">
+      <div class="navbar-links" id="navbar-links">
+        <a class="navbar-link navbar-link-mobile-only" href="/merch">MERCH</a>
+        <a class="navbar-link navbar-link-mobile-only" href="/store-locator">STORE LOCATOR</a>
+        <div class="navbar-dropdown">
+          <button type="button" class="navbar-link navbar-dropdown-toggle">ABOUT</button>
+          <div class="navbar-dropdown-menu">
+            <a class="navbar-dropdown-link" href="/team">THE TEAM</a>
+            <a class="navbar-dropdown-link" href="/yerba">THE YERBA</a>
+          </div>
+        </div>
+        <a class="navbar-link" href="/buy">BUY ULTIMATÉ</a>
+      </div>
+      <button type="button" class="navbar-cart" aria-label="Open cart">
+        <svg class="navbar-cart-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 6h15l-1.5 9h-12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M6 6L4.5 3H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="9" cy="20" r="1.3" fill="currentColor"/>
+          <circle cx="18" cy="20" r="1.3" fill="currentColor"/>
+        </svg>
+        <span class="navbar-cart-count" hidden>0</span>
+      </button>
+    </div>
+  </nav>
+  <section class="yerba-hero">
+    <img class="yerba-hero-image" src="MEDIA/THE%20YERBA/yerba_macro_horizontal.jpg" alt="Macro shot of dried yerba maté">
+    <div class="yerba-hero-scrim"></div>
+    <h1 class="yerba-hero-title">
+      <span class="yerba-hero-title-the">THE</span>
+      <span class="yerba-hero-title-yerba">Yerba</span>
+    </h1>
+  </section>
+  <section class="yerba-section-white">
+    <div class="yerba-recipe-split">
+      <div class="yerba-recipe-image-wrap">
+        <div class="yerba-recipe-image-inner">
+          <img class="yerba-recipe-image" src="MEDIA/THE%20YERBA/ultimate_in_glass_macro.jpg" alt="Macro shot of ULTIMATÉ carbonation in a glass">
+          <div class="yerba-recipe-image-overlay">
+            <div class="yerba-recipe-overlay-line">
+              <span class="yerba-recipe-overlay-word">The</span>
+              <span class="yerba-recipe-overlay-logotype" role="img" aria-label="ULTIMATÉ"></span>
+              <span class="yerba-recipe-overlay-word">Fuel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="yerba-recipe-panel">
+        <div class="yerba-fuel-statement">
+          <div class="yerba-origin-group">
+            <p class="yerba-origin-group-title">Famous For A Feeling</p>
+            <p class="yerba-origin-body">Real brewed yerba maté gives you a feeling people keep coming back for. Smooth, steady, and completely its own.</p>
+          </div>
+          <div class="yerba-origin-group">
+            <p class="yerba-origin-group-title">One Of A Kind</p>
+            <p class="yerba-origin-body">An energy that builds gradually and lasts longer, so you can do whatever you set your mind to.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="yerba-origin">
+    <p class="yerba-origin-text">"This one actually hits! Super smooth, not too sweet, and gives energy without the crash or jitters. I'd def pick this over coffee any day."</p>
+    <div class="yerba-origin-split">
+      <div class="yerba-origin-split-panel">
+        <div class="yerba-fuel-statement yerba-fuel-statement-inverted">
+          <div class="yerba-origin-group">
+            <p class="yerba-origin-group-title">Where It All Began</p>
+            <p class="yerba-origin-body">Yerba maté comes from Ilex paraguariensis, a South American plant first discovered by the Indigenous Guaraní peoples. For generations, the leaves have been harvested, dried, and brewed into a drink shared from hand to hand, a tradition across Argentina, Uruguay, Paraguay, and southern Brazil long before it ever found its way into a can.</p>
+          </div>
+          <div class="yerba-origin-group">
+            <p class="yerba-origin-group-title">Staying True</p>
+            <p class="yerba-origin-body">We brew every batch the real way, never with extracts or shortcuts. It's how we keep the <span class="yerba-fuel-statement-accent">natural effect</span> yerba maté has always been known for, batch after batch, can after can.</p>
+          </div>
+        </div>
+      </div>
+      <div class="yerba-origin-image-wrap">
+        <div class="yerba-origin-image-inner">
+          <img class="yerba-origin-image" src="MEDIA/THE%20YERBA/stirring_shot.jpg" alt="Stirring real yerba maté during the brewing process">
+          <div class="yerba-origin-image-overlay">
+            <span class="yerba-origin-overlay-text">
+              <span class="yerba-origin-overlay-line yerba-origin-overlay-line-the">The</span>
+              <span class="yerba-origin-overlay-line yerba-origin-overlay-line-origins">Origins</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="yerba-science-section">
+    <h2 class="yerba-science-title">The Science</h2>
+    <div class="yerba-science-gallery">
+      <div class="yerba-science-card">
+        <img class="yerba-science-image" src="MEDIA/MACRO%20SHOTS/white_leaves_macro.jpg" alt="Macro shot of condensation on the ULTIMATÉ can">
+        <p class="yerba-science-label">Caffeine</p>
+        <p class="yerba-science-text">The one you all know and love. Known for delivering that boost of energy that gets you going, sharpens your focus, and keeps you moving. Whether you're chasing goals or pushing through the day, caffeine helps you stay alert and ready for whatever comes next.</p>
+      </div>
+      <div class="yerba-science-card">
+        <img class="yerba-science-image" src="MEDIA/THE%20YERBA/pure_trefoil_macro.jpg" alt="Macro shot of the ULTIMATÉ trefoil logo">
+        <p class="yerba-science-label">Theobromine</p>
+        <p class="yerba-science-text">The smooth and steady one. Known for its gentle, longer-lasting stimulating effects, theobromine works alongside caffeine to keep you feeling energized without the same intensity. Think of it as the calm behind the energy, helping you keep going without feeling overstimulated.</p>
+      </div>
+      <div class="yerba-science-card">
+        <img class="yerba-science-image" src="MEDIA/THE%20YERBA/lid_macro.jpg" alt="Macro shot of the can lid and pull tab">
+        <p class="yerba-science-label">Antioxidants</p>
+        <p class="yerba-science-text">The ones working behind the scenes. Known for helping protect your cells from everyday oxidative stress, antioxidants help your body fight off damage caused by free radicals. These are your body's defenders, working to keep you feeling your best.</p>
+      </div>
+    </div>
+  </section>
+  <section class="yerba-macro-duo">
+    <img class="yerba-macro-duo-image" src="MEDIA/MACRO%20SHOTS/pure_macro.jpg" alt="Macro shot of the ULTIMATÉ Pure can">
+    <img class="yerba-macro-duo-image" src="MEDIA/MACRO%20SHOTS/original_macro.jpg" alt="Macro shot of the ULTIMATÉ Original can">
+    <div class="yerba-macro-duo-rect">
+      <h2 class="yerba-macro-duo-title">The Why</h2>
+      <p class="yerba-macro-duo-text">We do what we do at ULTIMATÉ because we believe more people deserve to feel the power of yerba maté. We're here to spread the word, share the energy, and show the world a better way to fuel up. It's time to feel the difference, unlock your potential, and become your ULTIMATÉ self. Try ULTIMATÉ today.</p>
+      <a class="merch-button story-cta-button" href="/buy">SHOP ULTIMATÉ</a>
+    </div>
+  </section>
+  <footer class="footer">
+    <img class="footer-logo" src="LOGOS/WHITE_LOGOMARK%20(1).png" alt="Ultimate logomark">
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h3 class="footer-column-title">EXPLORE</h3>
+        <a class="footer-link" href="/">HOME</a>
+        <a class="footer-link" href="/team">THE TEAM</a>
+        <a class="footer-link" href="/yerba">THE YERBA</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">SHOP</h3>
+        <a class="footer-link" href="/buy">BUY ULTIMATÉ</a>
+        <a class="footer-link" href="/merch">BUY MERCH</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">MORE</h3>
+        <a class="footer-link" href="/wholesale">WHOLESALE</a>
+        <a class="footer-link" href="/store-locator">STORE LOCATOR</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">CONTACT</h3>
+        <a class="footer-link" href="mailto:support@drinkultimate.com">SUPPORT@DRINKULTIMATE.COM</a>
+        <a class="footer-link" href="https://www.instagram.com/drinkultimateofficial/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script src="shopify.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>

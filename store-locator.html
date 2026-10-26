@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        registrations.forEach(function (registration) { registration.unregister(); });
+      });
+    }
+    if ('caches' in window) {
+      caches.keys().then(function (names) {
+        names.forEach(function (name) { caches.delete(name); });
+      });
+    }
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store Locator | Ultimaté</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="LOGOS/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="LOGOS/favicon-48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="LOGOS/favicon-180.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="meta-pixel.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-light">
+    <button type="button" class="navbar-hamburger" id="navbar-hamburger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="navbar-left">
+      <a class="navbar-link" href="/merch">MERCH</a>
+      <a class="navbar-link" href="/store-locator">STORE LOCATOR</a>
+    </div>
+    <a class="navbar-logo-wrap" href="/">
+      <span class="navbar-logo" role="img" aria-label="Ultimate logo"></span>
+    </a>
+    <div class="navbar-right">
+      <div class="navbar-links" id="navbar-links">
+        <a class="navbar-link navbar-link-mobile-only" href="/merch">MERCH</a>
+        <a class="navbar-link navbar-link-mobile-only" href="/store-locator">STORE LOCATOR</a>
+        <div class="navbar-dropdown">
+          <button type="button" class="navbar-link navbar-dropdown-toggle">ABOUT</button>
+          <div class="navbar-dropdown-menu">
+            <a class="navbar-dropdown-link" href="/team">THE TEAM</a>
+            <a class="navbar-dropdown-link" href="/yerba">THE YERBA</a>
+          </div>
+        </div>
+        <a class="navbar-link" href="/buy">BUY ULTIMATÉ</a>
+      </div>
+      <button type="button" class="navbar-cart" aria-label="Open cart">
+        <svg class="navbar-cart-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 6h15l-1.5 9h-12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M6 6L4.5 3H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="9" cy="20" r="1.3" fill="currentColor"/>
+          <circle cx="18" cy="20" r="1.3" fill="currentColor"/>
+        </svg>
+        <span class="navbar-cart-count" hidden>0</span>
+      </button>
+    </div>
+  </nav>
+  <section class="merch-page-title-section">
+    <h1 class="merch-page-title">Find Us</h1>
+  </section>
+  <section class="store-locator-intro">
+    <p class="wholesale-intro-text">ULTIMATÉ is currently stocked at the locations below. Click a pin or a store in the list to get directions.</p>
+  </section>
+  <section class="store-locator-section">
+    <div class="store-locator-list" id="store-locator-list"></div>
+    <div class="store-locator-map" id="store-locator-map"></div>
+  </section>
+  <footer class="footer">
+    <img class="footer-logo" src="LOGOS/WHITE_LOGOMARK%20(1).png" alt="Ultimate logomark">
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h3 class="footer-column-title">EXPLORE</h3>
+        <a class="footer-link" href="/">HOME</a>
+        <a class="footer-link" href="/team">THE TEAM</a>
+        <a class="footer-link" href="/yerba">THE YERBA</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">SHOP</h3>
+        <a class="footer-link" href="/buy">BUY ULTIMATÉ</a>
+        <a class="footer-link" href="/merch">BUY MERCH</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">MORE</h3>
+        <a class="footer-link" href="/wholesale">WHOLESALE</a>
+        <a class="footer-link" href="/store-locator">STORE LOCATOR</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">CONTACT</h3>
+        <a class="footer-link" href="mailto:support@drinkultimate.com">SUPPORT@DRINKULTIMATE.COM</a>
+        <a class="footer-link" href="https://www.instagram.com/drinkultimateofficial/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script src="shopify.js"></script>
+  <script src="cart.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="store-locator.js"></script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        registrations.forEach(function (registration) { registration.unregister(); });
+      });
+    }
+    if ('caches' in window) {
+      caches.keys().then(function (names) {
+        names.forEach(function (name) { caches.delete(name); });
+      });
+    }
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimaté Mix &amp; Match</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="LOGOS/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="LOGOS/favicon-48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="LOGOS/favicon-180.png">
+<link rel="stylesheet" href="style.css">
+  <script src="meta-pixel.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-light">
+    <button type="button" class="navbar-hamburger" id="navbar-hamburger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="navbar-left">
+      <a class="navbar-link" href="/merch">MERCH</a>
+      <a class="navbar-link" href="/store-locator">STORE LOCATOR</a>
+    </div>
+    <a class="navbar-logo-wrap" href="/">
+      <span class="navbar-logo" role="img" aria-label="Ultimate logo"></span>
+    </a>
+    <div class="navbar-right">
+      <div class="navbar-links" id="navbar-links">
+        <a class="navbar-link navbar-link-mobile-only" href="/merch">MERCH</a>
+        <a class="navbar-link navbar-link-mobile-only" href="/store-locator">STORE LOCATOR</a>
+        <div class="navbar-dropdown">
+          <button type="button" class="navbar-link navbar-dropdown-toggle">ABOUT</button>
+          <div class="navbar-dropdown-menu">
+            <a class="navbar-dropdown-link" href="/team">THE TEAM</a>
+            <a class="navbar-dropdown-link" href="/yerba">THE YERBA</a>
+          </div>
+        </div>
+        <a class="navbar-link" href="/buy">BUY ULTIMATÉ</a>
+      </div>
+      <button type="button" class="navbar-cart" aria-label="Open cart">
+        <svg class="navbar-cart-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 6h15l-1.5 9h-12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M6 6L4.5 3H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="9" cy="20" r="1.3" fill="currentColor"/>
+          <circle cx="18" cy="20" r="1.3" fill="currentColor"/>
+        </svg>
+        <span class="navbar-cart-count" hidden>0</span>
+      </button>
+    </div>
+  </nav>
+  <section class="product-page product-page-mix">
+    <div class="product-image-col">
+      <div class="product-image-wrap">
+        <div class="product-carousel" id="product-carousel"></div>
+        <button type="button" class="carousel-arrow carousel-arrow-left" id="carousel-prev" aria-label="Previous image">&#10094;</button>
+        <button type="button" class="carousel-arrow carousel-arrow-right" id="carousel-next" aria-label="Next image">&#10095;</button>
+      </div>
+      <div class="carousel-dots" id="carousel-dots"></div>
+    </div>
+    <div class="product-info">
+      <h1 class="product-title">MIX &amp; MATCH</h1>
+      <p class="product-price" id="product-price">Loading price...</p>
+
+      <div class="product-field">
+        <span class="product-field-label">Pack Size</span>
+        <div class="product-options" id="pack-size-options">
+          <button type="button" class="product-option-btn" data-variant="42863658958933" data-pack="4">4 Cans</button>
+          <button type="button" class="product-option-btn" data-variant="42863658926165" data-pack="12">12 Cans</button>
+        </div>
+      </div>
+
+      <div class="product-field">
+        <span class="product-field-label">Purchase Type</span>
+        <div class="product-options" id="purchase-type-options">
+          <button type="button" class="product-option-btn" data-type="one-time">One-Time</button>
+          <button type="button" class="product-option-btn" data-type="subscribe">Subscribe &amp; Save 10%</button>
+        </div>
+      </div>
+
+      <div class="product-field" id="frequency-field" hidden>
+        <span class="product-field-label">Delivery Frequency</span>
+        <div class="product-options" id="frequency-options">
+          <button type="button" class="product-option-btn" data-plan="7937097813">Every Month</button>
+          <button type="button" class="product-option-btn" data-plan="7937130581">Every 2 Weeks</button>
+        </div>
+      </div>
+
+      <div class="product-field">
+        <span class="product-field-label">Quantity</span>
+        <div class="product-quantity">
+          <button type="button" class="quantity-btn" id="qty-decrease">−</button>
+          <span class="quantity-value" id="qty-value">1</span>
+          <button type="button" class="quantity-btn" id="qty-increase">+</button>
+        </div>
+      </div>
+
+      <button type="button" class="product-add-to-cart" id="add-to-cart-btn">ADD TO CART</button>
+      <p class="product-status" id="product-status"></p>
+
+      <div class="product-accordion" id="product-accordion">
+        <div class="accordion-item">
+          <button type="button" class="accordion-header" data-section="description">
+            <span>DESCRIPTION</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <div class="accordion-panel-inner" id="accordion-description"></div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button type="button" class="accordion-header" data-section="ingredients">
+            <span>INGREDIENTS</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <div class="accordion-panel-inner">
+              <div class="ingredients-columns">
+                <div class="ingredients-column">
+                  <h4 class="ingredients-column-title">ORIGINAL</h4>
+                  <ul class="ingredients-list">
+                    <li>REAL BREWED YERBA MATE</li>
+                    <li>LEMON JUICE</li>
+                    <li>RAW CANE SUGAR</li>
+                  </ul>
+                </div>
+                <div class="ingredients-column">
+                  <h4 class="ingredients-column-title">PURE</h4>
+                  <ul class="ingredients-list">
+                    <li>REAL BREWED YERBA MATE</li>
+                    <li>LEMON JUICE</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button type="button" class="accordion-header" data-section="nutrition">
+            <span>NUTRITION FACTS</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-panel">
+            <div class="accordion-panel-inner">
+              <div class="ingredients-columns">
+                <div class="ingredients-column">
+                  <h4 class="ingredients-column-title">ORIGINAL</h4>
+                  <div class="nutrition-facts">
+                    <h3 class="nutrition-facts-title">Nutrition Facts</h3>
+                    <p class="nutrition-facts-serving-count">1 serving per container</p>
+                    <div class="nutrition-facts-serving-size">
+                      <span>Serving Size</span>
+                      <span>1 can (355mL)</span>
+                    </div>
+                    <p class="nutrition-facts-amount-label">Amount Per Serving</p>
+                    <div class="nutrition-facts-calories">
+                      <span>Calories</span>
+                      <span class="nutrition-facts-calories-value">90</span>
+                    </div>
+                    <table class="nutrition-facts-table">
+                      <tr class="nutrition-facts-row"><td><strong>Total Fat</strong> 0g</td><td>0%</td></tr>
+                      <tr class="nutrition-facts-row"><td><strong>Sodium</strong> 0mg</td><td>0%</td></tr>
+                      <tr class="nutrition-facts-row"><td><strong>Total Carbohydrate</strong> 23g</td><td>8%</td></tr>
+                      <tr class="nutrition-facts-row nutrition-facts-indent"><td>Total Sugars 21g</td><td></td></tr>
+                      <tr class="nutrition-facts-row nutrition-facts-indent-2"><td>Includes 21g Added Sugars</td><td>42%</td></tr>
+                      <tr class="nutrition-facts-row"><td><strong>Protein</strong> 0g</td><td>0%</td></tr>
+                      <tr class="nutrition-facts-row"><td><strong>Caffeine</strong> 100mg</td><td></td></tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="ingredients-column">
+                  <h4 class="ingredients-column-title">PURE</h4>
+                  <div class="nutrition-facts">
+                    <h3 class="nutrition-facts-title">Nutrition Facts</h3>
+                    <p class="nutrition-facts-serving-count">1 serving per container</p>
+                    <div class="nutrition-facts-serving-size">
+                      <span>Serving Size</span>
+                      <span>1 can (355mL)</span>
+                    </div>
+                    <p class="nutrition-facts-amount-label">Amount Per Serving</p>
+                    <div class="nutrition-facts-calories">
+                      <span>Calories</span>
+                      <span class="nutrition-facts-calories-value">5</span>
+                    </div>
+                    <table class="nutrition-facts-table">
+                      <tr class="nutrition-facts-row"><td><strong>Total Fat</strong> 0g</td><td>0%</td></tr>
+                      <tr class="nutrition-facts-row"><td><strong>Sodium</strong> 0mg</td><td>0%</td></tr>
+                      <tr class="nutrition-facts-row"><td><strong>Total Carbohydrate</strong> 2g</td><td>1%</td></tr>
+                      <tr class="nutrition-facts-row nutrition-facts-indent"><td>Total Sugars 0g</td><td></td></tr>
+                      <tr class="nutrition-facts-row nutrition-facts-indent-2"><td>Includes 0g Added Sugars</td><td>0%</td></tr>
+                      <tr class="nutrition-facts-row"><td><strong>Protein</strong> 0g</td><td>0%</td></tr>
+                      <tr class="nutrition-facts-row"><td><strong>Caffeine</strong> 100mg</td><td></td></tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="reviews">
+    <h2 class="reviews-title">REVIEWS</h2>
+  </section>
+  <footer class="footer">
+    <img class="footer-logo" src="LOGOS/WHITE_LOGOMARK%20(1).png" alt="Ultimate logomark">
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h3 class="footer-column-title">EXPLORE</h3>
+        <a class="footer-link" href="/">HOME</a>
+        <a class="footer-link" href="/team">THE TEAM</a>
+        <a class="footer-link" href="/yerba">THE YERBA</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">SHOP</h3>
+        <a class="footer-link" href="/buy">BUY ULTIMATÉ</a>
+        <a class="footer-link" href="/merch">BUY MERCH</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">MORE</h3>
+        <a class="footer-link" href="/wholesale">WHOLESALE</a>
+        <a class="footer-link" href="/store-locator">STORE LOCATOR</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">CONTACT</h3>
+        <a class="footer-link" href="mailto:support@drinkultimate.com">SUPPORT@DRINKULTIMATE.COM</a>
+        <a class="footer-link" href="https://www.instagram.com/drinkultimateofficial/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script src="shopify.js"></script>
+  <script src="cart.js"></script>
+  <script src="product.js"></script>
+</body>
+</html>

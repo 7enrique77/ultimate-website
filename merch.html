@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        registrations.forEach(function (registration) { registration.unregister(); });
+      });
+    }
+    if ('caches' in window) {
+      caches.keys().then(function (names) {
+        names.forEach(function (name) { caches.delete(name); });
+      });
+    }
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merch | Ultimaté</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="LOGOS/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="LOGOS/favicon-48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="LOGOS/favicon-180.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="meta-pixel.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-light">
+    <button type="button" class="navbar-hamburger" id="navbar-hamburger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="navbar-left">
+      <a class="navbar-link" href="/merch">MERCH</a>
+      <a class="navbar-link" href="/store-locator">STORE LOCATOR</a>
+    </div>
+    <a class="navbar-logo-wrap" href="/">
+      <span class="navbar-logo" role="img" aria-label="Ultimate logo"></span>
+    </a>
+    <div class="navbar-right">
+      <div class="navbar-links" id="navbar-links">
+        <a class="navbar-link navbar-link-mobile-only" href="/merch">MERCH</a>
+        <a class="navbar-link navbar-link-mobile-only" href="/store-locator">STORE LOCATOR</a>
+        <div class="navbar-dropdown">
+          <button type="button" class="navbar-link navbar-dropdown-toggle">ABOUT</button>
+          <div class="navbar-dropdown-menu">
+            <a class="navbar-dropdown-link" href="/team">THE TEAM</a>
+            <a class="navbar-dropdown-link" href="/yerba">THE YERBA</a>
+          </div>
+        </div>
+        <a class="navbar-link" href="/buy">BUY ULTIMATÉ</a>
+      </div>
+      <button type="button" class="navbar-cart" aria-label="Open cart">
+        <svg class="navbar-cart-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 6h15l-1.5 9h-12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M6 6L4.5 3H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="9" cy="20" r="1.3" fill="currentColor"/>
+          <circle cx="18" cy="20" r="1.3" fill="currentColor"/>
+        </svg>
+        <span class="navbar-cart-count" hidden>0</span>
+      </button>
+    </div>
+  </nav>
+  <section class="merch-page-title-section">
+    <h1 class="merch-page-title">Merch</h1>
+  </section>
+  <section class="merch-grid">
+    <a class="merch-grid-item" href="/merch-reo-black">
+      <div class="merch-grid-image-wrap">
+        <img class="merch-grid-image" src="https://cdn.shopify.com/s/files/1/0659/1692/8085/files/81391a0a17a2407b9c417efe9096b894.png?v=1792352788" alt="REO BLACK">
+      </div>
+      <span class="merch-grid-button">SHOP NOW</span>
+    </a>
+    <a class="merch-grid-item" href="/merch-sport">
+      <div class="merch-grid-image-wrap">
+        <img class="merch-grid-image" src="https://cdn.shopify.com/s/files/1/0659/1692/8085/files/d90538f9daa7486ea5dae66567217ef0.png?v=1792353652" alt="SPORT">
+      </div>
+      <span class="merch-grid-button">SHOP NOW</span>
+    </a>
+    <a class="merch-grid-item" href="/merch-blossom">
+      <div class="merch-grid-image-wrap">
+        <img class="merch-grid-image" src="https://cdn.shopify.com/s/files/1/0659/1692/8085/files/fa4e20a045154aa9822eb73b97d3a1d5_fb77f3ad-0e44-4f57-800f-d38917215a8f.png?v=1792352811" alt="BLOSSOM">
+      </div>
+      <span class="merch-grid-button">SHOP NOW</span>
+    </a>
+    <a class="merch-grid-item" href="/merch-reo">
+      <div class="merch-grid-image-wrap">
+        <img class="merch-grid-image" src="https://cdn.shopify.com/s/files/1/0659/1692/8085/files/a70f02f5536841838f50f9c36bd670ac_949cb8c3-ab9b-4919-b9d0-2c7d5f6587a8.png?v=1792352795" alt="REO">
+      </div>
+      <span class="merch-grid-button">SHOP NOW</span>
+    </a>
+    <a class="merch-grid-item" href="/merch-da-fonk">
+      <div class="merch-grid-image-wrap">
+        <img class="merch-grid-image" src="https://cdn.shopify.com/s/files/1/0659/1692/8085/files/493254e34e51425a9f9c51d0cf3c78fd_41a2cc1d-1afd-4a1e-91ef-8fef2870db67.png?v=1792358586" alt="DA FONK">
+      </div>
+      <span class="merch-grid-button">SHOP NOW</span>
+    </a>
+    <a class="merch-grid-item" href="/merch-myko">
+      <div class="merch-grid-image-wrap">
+        <img class="merch-grid-image" src="https://cdn.shopify.com/s/files/1/0659/1692/8085/files/21d5107d297e42a3b72ea90d2d8b0cb1_8e423505-e47d-46e8-a2d3-b7b538ae699b.png?v=1792352807" alt="MYKO">
+      </div>
+      <span class="merch-grid-button">SHOP NOW</span>
+    </a>
+  </section>
+  <footer class="footer">
+    <img class="footer-logo" src="LOGOS/WHITE_LOGOMARK%20(1).png" alt="Ultimate logomark">
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h3 class="footer-column-title">EXPLORE</h3>
+        <a class="footer-link" href="/">HOME</a>
+        <a class="footer-link" href="/team">THE TEAM</a>
+        <a class="footer-link" href="/yerba">THE YERBA</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">SHOP</h3>
+        <a class="footer-link" href="/buy">BUY ULTIMATÉ</a>
+        <a class="footer-link" href="/merch">BUY MERCH</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">MORE</h3>
+        <a class="footer-link" href="/wholesale">WHOLESALE</a>
+        <a class="footer-link" href="/store-locator">STORE LOCATOR</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">CONTACT</h3>
+        <a class="footer-link" href="mailto:support@drinkultimate.com">SUPPORT@DRINKULTIMATE.COM</a>
+        <a class="footer-link" href="https://www.instagram.com/drinkultimateofficial/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script src="shopify.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>

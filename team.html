@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        registrations.forEach(function (registration) { registration.unregister(); });
+      });
+    }
+    if ('caches' in window) {
+      caches.keys().then(function (names) {
+        names.forEach(function (name) { caches.delete(name); });
+      });
+    }
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Team | Ultimaté</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="LOGOS/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="LOGOS/favicon-48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="LOGOS/favicon-180.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="meta-pixel.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <button type="button" class="navbar-hamburger" id="navbar-hamburger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="navbar-left">
+      <a class="navbar-link" href="/merch">MERCH</a>
+      <a class="navbar-link" href="/store-locator">STORE LOCATOR</a>
+    </div>
+    <a class="navbar-logo-wrap" href="/">
+      <span class="navbar-logo" role="img" aria-label="Ultimate logo"></span>
+    </a>
+    <div class="navbar-right">
+      <div class="navbar-links" id="navbar-links">
+        <a class="navbar-link navbar-link-mobile-only" href="/merch">MERCH</a>
+        <a class="navbar-link navbar-link-mobile-only" href="/store-locator">STORE LOCATOR</a>
+        <div class="navbar-dropdown">
+          <button type="button" class="navbar-link navbar-dropdown-toggle">ABOUT</button>
+          <div class="navbar-dropdown-menu">
+            <a class="navbar-dropdown-link" href="/team">THE TEAM</a>
+            <a class="navbar-dropdown-link" href="/yerba">THE YERBA</a>
+          </div>
+        </div>
+        <a class="navbar-link" href="/buy">BUY ULTIMATÉ</a>
+      </div>
+      <button type="button" class="navbar-cart" aria-label="Open cart">
+        <svg class="navbar-cart-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 6h15l-1.5 9h-12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M6 6L4.5 3H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="9" cy="20" r="1.3" fill="currentColor"/>
+          <circle cx="18" cy="20" r="1.3" fill="currentColor"/>
+        </svg>
+        <span class="navbar-cart-count" hidden>0</span>
+      </button>
+    </div>
+  </nav>
+  <section class="team-hero">
+    <img class="team-hero-image" src="MEDIA/THE%20TEAM/FARMERS2.JPG" alt="The ULTIMATÉ founders at a South Florida market pop-up">
+    <div class="team-hero-scrim"></div>
+    <h1 class="team-hero-title">
+      <span class="team-hero-title-the">THE</span>
+      <span class="team-hero-title-team">Team</span>
+    </h1>
+  </section>
+  <section class="yerba-section-white">
+    <div class="team-recipe-split">
+      <div class="team-recipe-image-wrap">
+        <div class="team-recipe-image-inner">
+          <img class="team-recipe-image" src="MEDIA/THE%20TEAM/FARMERS1.jpeg" alt="The ULTIMATÉ founders serving customers at their booth">
+        </div>
+      </div>
+      <div class="team-recipe-panel">
+        <div class="yerba-fuel-statement">
+          <div class="yerba-origin-group">
+            <p class="yerba-origin-group-title">01. Who We Are</p>
+            <p class="yerba-origin-body">We're a team of three college students brought together by a shared belief: energy shouldn't come with compromises.</p>
+            <p class="yerba-origin-body">Like most college students, we relied on energy drinks to get us through long days, late nights, and everything in between. But we were getting tired of the same old story: a quick burst of energy, followed by jitters, a crash, and the inevitable need for another can.</p>
+            <p class="yerba-origin-body">We were just about ready to give up on caffeine altogether when we stumbled upon something called yerba maté.</p>
+            <p class="yerba-origin-body">We'd heard it was different. A natural source of caffeine that delivered smooth, sustained energy, better focus, and none of the dreaded crash. Naturally, we were skeptical.</p>
+            <p class="yerba-origin-body">But after giving it a try, we understood what all the hype was about.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="team-origin">
+    <p class="team-origin-text">"We fell in love with yerba maté for a simple reason: the way it makes you feel."</p>
+    <div class="team-origin-split">
+      <div class="team-origin-split-panel">
+        <div class="yerba-fuel-statement yerba-fuel-statement-inverted">
+          <div class="yerba-origin-group">
+            <p class="yerba-origin-group-title">02. How It All Started</p>
+            <p class="yerba-origin-body">Although we started on opposite sides of the world, our love for yerba maté was growing at the very same time.</p>
+            <p class="yerba-origin-body">In Florida, our co-founder Enrique was discovering maté the traditional way, while across the Atlantic, our co-founder Philip was already familiar with a completely different take on the drink: Germany's popular bottled maté.</p>
+            <p class="yerba-origin-body">Two different places, two different experiences, but the same realization: there was something special about this drink.</p>
+            <p class="yerba-origin-body">Little did we know, those two experiences would eventually come together to become something much bigger.</p>
+          </div>
+        </div>
+      </div>
+      <div class="team-origin-image-wrap">
+        <div class="team-origin-image-inner">
+          <img class="team-origin-image" src="MEDIA/THE%20TEAM/CAN_POUR.png" alt="Friends pouring an ULTIMATÉ can at a house party">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="team-prose-section">
+    <div class="yerba-fuel-statement yerba-fuel-statement-inverted">
+      <div class="yerba-origin-group">
+        <p class="yerba-origin-group-title">03. What Drives Us</p>
+        <p class="yerba-origin-body">We're here for more than just a great drink.</p>
+        <p class="yerba-origin-body">We believe energy should help you make the most of life, not hold you back.</p>
+        <p class="yerba-origin-body">Whether you're chasing a dream, pushing your limits, creating something new, or simply enjoying the moment, we believe you deserve to feel your absolute best while doing it. That's what drives us every single day.</p>
+        <p class="yerba-origin-body">We're constantly learning, improving, and challenging ourselves to make ULTIMATÉ better. Not because we have to, but because we genuinely love what we're building.</p>
+        <p class="yerba-origin-body">We want to introduce the world to a different kind of energy. One that feels good, lasts long, and helps you do more of what you love.</p>
+        <p class="yerba-origin-body">Because to us, energy isn't just about doing more. It's about living more.</p>
+        <p class="yerba-origin-body">— The ULTIMATÉ Team</p>
+      </div>
+      <a class="merch-button story-cta-button" href="/buy">SHOP ULTIMATÉ</a>
+    </div>
+  </section>
+  <footer class="footer">
+    <img class="footer-logo" src="LOGOS/WHITE_LOGOMARK%20(1).png" alt="Ultimate logomark">
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h3 class="footer-column-title">EXPLORE</h3>
+        <a class="footer-link" href="/">HOME</a>
+        <a class="footer-link" href="/team">THE TEAM</a>
+        <a class="footer-link" href="/yerba">THE YERBA</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">SHOP</h3>
+        <a class="footer-link" href="/buy">BUY ULTIMATÉ</a>
+        <a class="footer-link" href="/merch">BUY MERCH</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">MORE</h3>
+        <a class="footer-link" href="/wholesale">WHOLESALE</a>
+        <a class="footer-link" href="/store-locator">STORE LOCATOR</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">CONTACT</h3>
+        <a class="footer-link" href="mailto:support@drinkultimate.com">SUPPORT@DRINKULTIMATE.COM</a>
+        <a class="footer-link" href="https://www.instagram.com/drinkultimateofficial/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script src="shopify.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>

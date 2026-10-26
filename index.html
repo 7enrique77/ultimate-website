@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        registrations.forEach(function (registration) { registration.unregister(); });
+      });
+    }
+    if ('caches' in window) {
+      caches.keys().then(function (names) {
+        names.forEach(function (name) { caches.delete(name); });
+      });
+    }
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="facebook-domain-verification" content="e7c1w2lhv6ophtvfrsoozzhiuz0a0v" />
+  <title>Ultimate Yerba Maté</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="LOGOS/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="LOGOS/favicon-48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="LOGOS/favicon-180.png">
+<link rel="stylesheet" href="style.css">
+  <script src="meta-pixel.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <button type="button" class="navbar-hamburger" id="navbar-hamburger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="navbar-left">
+      <a class="navbar-link" href="/merch">MERCH</a>
+      <a class="navbar-link" href="/store-locator">STORE LOCATOR</a>
+    </div>
+    <a class="navbar-logo-wrap" href="/">
+      <span class="navbar-logo" role="img" aria-label="Ultimate logo"></span>
+    </a>
+    <div class="navbar-right">
+      <div class="navbar-links" id="navbar-links">
+        <a class="navbar-link navbar-link-mobile-only" href="/merch">MERCH</a>
+        <a class="navbar-link navbar-link-mobile-only" href="/store-locator">STORE LOCATOR</a>
+        <div class="navbar-dropdown">
+          <button type="button" class="navbar-link navbar-dropdown-toggle">ABOUT</button>
+          <div class="navbar-dropdown-menu">
+            <a class="navbar-dropdown-link" href="/team">THE TEAM</a>
+            <a class="navbar-dropdown-link" href="/yerba">THE YERBA</a>
+          </div>
+        </div>
+        <a class="navbar-link" href="/buy">BUY ULTIMATÉ</a>
+      </div>
+      <button type="button" class="navbar-cart" aria-label="Open cart">
+        <svg class="navbar-cart-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 6h15l-1.5 9h-12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M6 6L4.5 3H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="9" cy="20" r="1.3" fill="currentColor"/>
+          <circle cx="18" cy="20" r="1.3" fill="currentColor"/>
+        </svg>
+        <span class="navbar-cart-count" hidden>0</span>
+      </button>
+    </div>
+  </nav>
+  <section class="hero">
+    <picture>
+      <source media="(max-width: 768px)" srcset="MEDIA/CHEERS.jpg">
+      <img class="hero-image" src="MEDIA/BOTH_CANS_HERO.jpg" alt="Ultimate Yerba Maté can on a blue tennis court">
+    </picture>
+    <a class="hero-buy-button" href="/buy">BUY NOW</a>
+  </section>
+  <div class="marquee">
+    <div class="marquee-track">
+      <div class="marquee-group">
+        <span class="marquee-item">REAL BREWED</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">YERBA MATÉ</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">REAL BREWED</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">YERBA MATÉ</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">REAL BREWED</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">YERBA MATÉ</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">REAL BREWED</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">YERBA MATÉ</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">REAL BREWED</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">YERBA MATÉ</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">REAL BREWED</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">YERBA MATÉ</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">REAL BREWED</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">YERBA MATÉ</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">REAL BREWED</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">YERBA MATÉ</span>
+        <span class="marquee-icon"></span>
+      </div>
+      <div class="marquee-group" aria-hidden="true">
+        <span class="marquee-item">REAL BREWED</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">YERBA MATÉ</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">REAL BREWED</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">YERBA MATÉ</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">REAL BREWED</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">YERBA MATÉ</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">REAL BREWED</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">YERBA MATÉ</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">REAL BREWED</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">YERBA MATÉ</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">REAL BREWED</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">YERBA MATÉ</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">REAL BREWED</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">YERBA MATÉ</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">REAL BREWED</span>
+        <span class="marquee-icon"></span>
+        <span class="marquee-item">YERBA MATÉ</span>
+        <span class="marquee-icon"></span>
+      </div>
+    </div>
+  </div>
+  <section class="showcase">
+    <p class="showcase-text showcase-text-left">THE <span class="showcase-accent">PEAK</span> OF ENERGY</p>
+    <div class="showcase-can-wrap">
+      <img class="showcase-can" src="MEDIA/ORIGINAL.png" alt="Ultimate Yerba Maté Original can">
+      <a class="showcase-buy-button" href="/buy">BUY NOW</a>
+    </div>
+    <p class="showcase-text showcase-text-right">PERFECTED IN <span class="showcase-accent">TASTE</span></p>
+  </section>
+  <section class="strip">
+    <div class="strip-inner">
+      <img class="strip-image strip-image-dim" src="MEDIA/SOCCER.jpg" alt="Person holding a soccer ball and an Ultimate can">
+      <img class="strip-image" src="MEDIA/CLIMB.jpg" alt="Climbers with an Ultimate can on the wall">
+      <img class="strip-image" src="MEDIA/COURT.jpg" alt="Tennis players sharing an Ultimate can at the net">
+    </div>
+    <div class="strip-labels">
+      <span class="strip-label">ENERGY</span>
+      <span class="strip-label">THAT</span>
+      <span class="strip-label">LASTS</span>
+    </div>
+  </section>
+  <div class="marquee marquee-dark">
+    <div class="marquee-track marquee-track-dark">
+      <div class="marquee-group">
+        <span class="marquee-item marquee-item-white">FEEL GOOD FOCUS</span>
+        <span class="marquee-icon marquee-icon-white"></span>
+        <span class="marquee-item marquee-item-white">FEEL GOOD FOCUS</span>
+        <span class="marquee-icon marquee-icon-white"></span>
+        <span class="marquee-item marquee-item-white">FEEL GOOD FOCUS</span>
+        <span class="marquee-icon marquee-icon-white"></span>
+        <span class="marquee-item marquee-item-white">FEEL GOOD FOCUS</span>
+        <span class="marquee-icon marquee-icon-white"></span>
+        <span class="marquee-item marquee-item-white">FEEL GOOD FOCUS</span>
+        <span class="marquee-icon marquee-icon-white"></span>
+        <span class="marquee-item marquee-item-white">FEEL GOOD FOCUS</span>
+        <span class="marquee-icon marquee-icon-white"></span>
+        <span class="marquee-item marquee-item-white">FEEL GOOD FOCUS</span>
+        <span class="marquee-icon marquee-icon-white"></span>
+        <span class="marquee-item marquee-item-white">FEEL GOOD FOCUS</span>
+        <span class="marquee-icon marquee-icon-white"></span>
+      </div>
+      <div class="marquee-group" aria-hidden="true">
+        <span class="marquee-item marquee-item-white">FEEL GOOD FOCUS</span>
+        <span class="marquee-icon marquee-icon-white"></span>
+        <span class="marquee-item marquee-item-white">FEEL GOOD FOCUS</span>
+        <span class="marquee-icon marquee-icon-white"></span>
+        <span class="marquee-item marquee-item-white">FEEL GOOD FOCUS</span>
+        <span class="marquee-icon marquee-icon-white"></span>
+        <span class="marquee-item marquee-item-white">FEEL GOOD FOCUS</span>
+        <span class="marquee-icon marquee-icon-white"></span>
+        <span class="marquee-item marquee-item-white">FEEL GOOD FOCUS</span>
+        <span class="marquee-icon marquee-icon-white"></span>
+        <span class="marquee-item marquee-item-white">FEEL GOOD FOCUS</span>
+        <span class="marquee-icon marquee-icon-white"></span>
+        <span class="marquee-item marquee-item-white">FEEL GOOD FOCUS</span>
+        <span class="marquee-icon marquee-icon-white"></span>
+        <span class="marquee-item marquee-item-white">FEEL GOOD FOCUS</span>
+        <span class="marquee-icon marquee-icon-white"></span>
+      </div>
+    </div>
+  </div>
+  <section class="merch">
+    <div class="merch-left">
+      <h2 class="merch-title">MERCH</h2>
+      <p class="merch-text">A curated selection of T-Shirts, hats and sport wear so you can look your best, while drinking the best. Designed by local Miami artists.</p>
+      <a class="merch-button story-cta-button" href="/merch">SHOP MERCH</a>
+    </div>
+    <div class="merch-right">
+      <img class="merch-image" src="MEDIA/MYKO.jpg" alt="Myko merch">
+    </div>
+  </section>
+  <section class="merch">
+    <div class="merch-right">
+      <img class="merch-image" src="MEDIA/RECOVER.jpg" alt="Recover">
+    </div>
+    <div class="merch-left">
+      <h2 class="merch-title">REAL BREWED FOCUS</h2>
+      <p class="merch-text">A drink made for PERFORMANCE without any compromises. From enhanced focus to appetite suppression, check out the many benefits of Maté</p>
+      <a class="merch-button story-cta-button" href="/yerba">LEARN MORE</a>
+    </div>
+  </section>
+  <section class="testimonials">
+    <h2 class="testimonials-title">DON'T TAKE OUR WORD FOR IT...</h2>
+    <div class="reviews-row">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">100/10</p>
+        <p class="review-body">Excellent drink, very refreshing. Super smooth and perfect for a pick me up, will 100% be purchasing this product again.</p>
+        <p class="review-author">— ET</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Mejor Bebida Energética Saludable</p>
+        <p class="review-body">Este producto no debería tener competencia, es rico, con solo agua, limón y yerba mate 🧉, no tiene azúcar, mejor imposible.</p>
+        <p class="review-author">— Francisco Marcano</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Tea Review</p>
+        <p class="review-body">I thought the flavor was unique in a good way. Now that I think of it I wanna order a whole box. 10/10 for sure!!</p>
+        <p class="review-author">— Enoch</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">So Good!</p>
+        <p class="review-body">Love the taste, tastes like an iced tea but sparkling, perfect for hot weather or just when low energy. Love it!</p>
+        <p class="review-author">— Caroline F</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">10/10 ✨✨✨</p>
+        <p class="review-body">This one actually hits! Super smooth, not too sweet, and gives energy without the crash or jitters. I'd def pick this over coffee any day.</p>
+        <p class="review-author">— Daisy</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Taste Amazing</p>
+        <p class="review-body">The drink blends the classic taste of maté with a touch of lemon, making it crisp, refreshing, and very enjoyable.</p>
+        <p class="review-author">— Zack Zanyk</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Great Drink!</p>
+        <p class="review-body">Tastes super good and makes me feel even better!</p>
+        <p class="review-author">— J Martinez</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">I Love This Drink!</p>
+        <p class="review-body">Great pick me up for a fresh boost of energy, would highly recommend!!!</p>
+        <p class="review-author">— Chester Stone</p>
+      </div>
+    </div>
+  </section>
+  <div class="movement-wrap">
+    <img class="movement-image" src="MEDIA/MOVEMENT.jpg" alt="Movement">
+    <div class="movement-overlay">
+      <h2 class="movement-title">JOIN THE MOVEMENT</h2>
+      <p class="movement-subtitle">It's more than a drink</p>
+    </div>
+  </div>
+  <section class="next-section"></section>
+  <a class="marquee-link" href="https://www.instagram.com/drinkultimateofficial/" target="_blank" rel="noopener noreferrer">
+    <div class="marquee marquee-instagram">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <span class="marquee-item marquee-item-black">@drinkultimateofficial</span>
+          <span class="marquee-icon marquee-icon-black"></span>
+          <span class="marquee-item marquee-item-black">@drinkultimateofficial</span>
+          <span class="marquee-icon marquee-icon-black"></span>
+          <span class="marquee-item marquee-item-black">@drinkultimateofficial</span>
+          <span class="marquee-icon marquee-icon-black"></span>
+          <span class="marquee-item marquee-item-black">@drinkultimateofficial</span>
+          <span class="marquee-icon marquee-icon-black"></span>
+          <span class="marquee-item marquee-item-black">@drinkultimateofficial</span>
+          <span class="marquee-icon marquee-icon-black"></span>
+          <span class="marquee-item marquee-item-black">@drinkultimateofficial</span>
+          <span class="marquee-icon marquee-icon-black"></span>
+          <span class="marquee-item marquee-item-black">@drinkultimateofficial</span>
+          <span class="marquee-icon marquee-icon-black"></span>
+          <span class="marquee-item marquee-item-black">@drinkultimateofficial</span>
+          <span class="marquee-icon marquee-icon-black"></span>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <span class="marquee-item marquee-item-black">@drinkultimateofficial</span>
+          <span class="marquee-icon marquee-icon-black"></span>
+          <span class="marquee-item marquee-item-black">@drinkultimateofficial</span>
+          <span class="marquee-icon marquee-icon-black"></span>
+          <span class="marquee-item marquee-item-black">@drinkultimateofficial</span>
+          <span class="marquee-icon marquee-icon-black"></span>
+          <span class="marquee-item marquee-item-black">@drinkultimateofficial</span>
+          <span class="marquee-icon marquee-icon-black"></span>
+          <span class="marquee-item marquee-item-black">@drinkultimateofficial</span>
+          <span class="marquee-icon marquee-icon-black"></span>
+          <span class="marquee-item marquee-item-black">@drinkultimateofficial</span>
+          <span class="marquee-icon marquee-icon-black"></span>
+          <span class="marquee-item marquee-item-black">@drinkultimateofficial</span>
+          <span class="marquee-icon marquee-icon-black"></span>
+          <span class="marquee-item marquee-item-black">@drinkultimateofficial</span>
+          <span class="marquee-icon marquee-icon-black"></span>
+        </div>
+      </div>
+    </div>
+  </a>
+  <section class="instagram-grid">
+    <div class="instagram-feed-grid" id="instagram-feed-grid"></div>
+  </section>
+  <div class="dark-vid-wrap">
+    <video class="dark-vid" src="MEDIA/DARK_VID.mov" autoplay muted loop playsinline></video>
+  </div>
+  <section class="dark-section">
+    <div class="newsletter-box">
+      <p class="newsletter-eyebrow">ULTIMATÉ NEWSLETTER</p>
+      <h2 class="newsletter-title">WHAT'S ULTIMATÉ BREWING??</h2>
+      <form class="newsletter-form">
+        <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+        <button type="submit" class="newsletter-submit">Submit</button>
+      </form>
+    </div>
+  </section>
+  <footer class="footer">
+    <img class="footer-logo" src="LOGOS/WHITE_LOGOMARK%20(1).png" alt="Ultimate logomark">
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h3 class="footer-column-title">EXPLORE</h3>
+        <a class="footer-link" href="/">HOME</a>
+        <a class="footer-link" href="/team">THE TEAM</a>
+        <a class="footer-link" href="/yerba">THE YERBA</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">SHOP</h3>
+        <a class="footer-link" href="/buy">BUY ULTIMATÉ</a>
+        <a class="footer-link" href="/merch">BUY MERCH</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">MORE</h3>
+        <a class="footer-link" href="/wholesale">WHOLESALE</a>
+        <a class="footer-link" href="/store-locator">STORE LOCATOR</a>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-column-title">CONTACT</h3>
+        <a class="footer-link" href="mailto:support@drinkultimate.com">SUPPORT@DRINKULTIMATE.COM</a>
+        <a class="footer-link" href="https://www.instagram.com/drinkultimateofficial/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script src="shopify.js"></script>
+  <script src="cart.js"></script>
+  <script src="instagram-feed.js"></script>
+</body>
+</html>
