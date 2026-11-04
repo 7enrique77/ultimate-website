@@ -499,6 +499,11 @@ body {
   width: 100%;
 }
 
+.promo-popup-offer[hidden],
+.promo-popup-success[hidden] {
+  display: none;
+}
+
 .promo-popup-eyebrow {
   font-family: 'Poffen-Regular', sans-serif;
   text-transform: uppercase;
