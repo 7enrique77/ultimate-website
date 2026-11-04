@@ -1,4 +1,5 @@
 const CART_ID_KEY = 'ultimate_cart_id';
+const PROMO_CODE_KEY = 'ultimate_promo_code';
 
 function getCartId() {
   return localStorage.getItem(CART_ID_KEY);
@@ -6,6 +7,10 @@ function getCartId() {
 
 function setCartId(id) {
   localStorage.setItem(CART_ID_KEY, id);
+}
+
+function getStoredPromoCode() {
+  return localStorage.getItem(PROMO_CODE_KEY);
 }
 
 function formatCartMoney(amount, currencyCode) {
@@ -23,6 +28,7 @@ cartDrawer.innerHTML = `
     </div>
     <div class="cart-drawer-lines" id="cart-lines"></div>
     <div class="cart-drawer-footer">
+      <p class="cart-drawer-promo" id="cart-promo" hidden></p>
       <div class="cart-drawer-subtotal">
         <span>Subtotal</span>
         <span id="cart-subtotal">$0.00</span>
@@ -35,6 +41,7 @@ document.body.appendChild(cartDrawer);
 
 const cartOverlay = document.getElementById('cart-overlay');
 const cartLinesEl = document.getElementById('cart-lines');
+const cartPromoEl = document.getElementById('cart-promo');
 const cartSubtotalEl = document.getElementById('cart-subtotal');
 const cartCheckoutBtn = document.getElementById('cart-checkout');
 const cartCloseBtn = document.getElementById('cart-close');
@@ -59,6 +66,14 @@ function renderCart(cart) {
     el.textContent = totalQuantity;
     el.hidden = totalQuantity === 0;
   });
+
+  const appliedCode = cart && cart.discountCodes ? cart.discountCodes.find((d) => d.applicable) : null;
+  if (appliedCode) {
+    cartPromoEl.textContent = `Code ${appliedCode.code} applied`;
+    cartPromoEl.hidden = false;
+  } else {
+    cartPromoEl.hidden = true;
+  }
 
   if (!cart || cart.lines.edges.length === 0) {
     cartLinesEl.innerHTML = '<p class="cart-drawer-empty">Your cart is empty.</p>';
@@ -128,20 +143,35 @@ async function handleRemoveLine(lineId) {
 
 async function addToCart(variantId, quantity, sellingPlanId) {
   const cartId = getCartId();
+  const promoCode = getStoredPromoCode();
   let cart;
   if (cartId) {
     try {
       cart = await cartLinesAdd(cartId, variantId, quantity, sellingPlanId);
+      if (promoCode && !(cart.discountCodes || []).some((d) => d.applicable)) {
+        cart = await cartDiscountCodesUpdate(cartId, [promoCode]);
+      }
     } catch (err) {
       cart = null;
     }
   }
   if (!cart) {
-    cart = await cartCreate(variantId, quantity, sellingPlanId);
+    cart = await cartCreate(variantId, quantity, sellingPlanId, promoCode ? [promoCode] : null);
     setCartId(cart.id);
   }
   renderCart(cart);
   openCartDrawer();
+}
+
+async function applyPromoCodeToCart(code) {
+  const cartId = getCartId();
+  if (!cartId) return;
+  try {
+    const cart = await cartDiscountCodesUpdate(cartId, [code]);
+    renderCart(cart);
+  } catch (err) {
+    /* cart will pick up the code on the next line added */
+  }
 }
 
 cartToggleEls.forEach((btn) => btn.addEventListener('click', () => openCartDrawer()));
@@ -160,7 +190,15 @@ cartCheckoutBtn.addEventListener('click', () => {
     return;
   }
   try {
-    const cart = await cartGet(cartId);
+    let cart = await cartGet(cartId);
+    const promoCode = getStoredPromoCode();
+    if (cart && promoCode && !(cart.discountCodes || []).some((d) => d.applicable)) {
+      try {
+        cart = await cartDiscountCodesUpdate(cartId, [promoCode]);
+      } catch (err) {
+        /* keep the un-discounted cart rather than failing init */
+      }
+    }
     renderCart(cart);
   } catch (err) {
     renderCart(null);

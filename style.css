@@ -367,6 +367,15 @@ body {
   border-top: 1px solid #eeeeee;
 }
 
+.cart-drawer-promo {
+  font-family: 'Poffen-Regular', sans-serif;
+  text-transform: uppercase;
+  color: #094BCC;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  margin: 0 0 0.75rem;
+}
+
 .cart-drawer-subtotal {
   display: flex;
   justify-content: space-between;
@@ -394,6 +403,139 @@ body {
 .cart-drawer-checkout:disabled {
   opacity: 0.5;
   cursor: default;
+}
+
+.promo-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  visibility: hidden;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.promo-popup-open {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.promo-popup-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.promo-popup-open .promo-popup-overlay {
+  opacity: 1;
+}
+
+.promo-popup-card {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  background: #02066F;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.promo-popup-open .promo-popup-card {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.promo-popup-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.promo-popup-eyebrow {
+  font-family: 'Poffen-Regular', sans-serif;
+  text-transform: uppercase;
+  color: #7fe0e6;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+.promo-popup-title {
+  font-family: 'Poffen-Regular', sans-serif;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-size: clamp(1.9rem, 6vw, 2.6rem);
+  line-height: 1.05;
+  margin: 0;
+}
+
+.promo-popup-sub {
+  font-family: 'Poffen-Regular', sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 320px;
+}
+
+.promo-popup-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.promo-popup-input {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  border: 2px solid #ffffff;
+  border-radius: 0;
+  background: transparent;
+  color: #ffffff;
+  font-family: 'Poffen-Regular', sans-serif;
+  font-size: 1rem;
+}
+
+.promo-popup-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.promo-popup-card .merch-button {
+  width: 100%;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.promo-popup-card .merch-button::before {
+  background: #ffffff;
+}
+
+.promo-popup-card .merch-button:hover {
+  color: #02066F;
+}
+
+.promo-popup-fineprint {
+  font-family: 'Poffen-Regular', sans-serif;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  margin: 0;
 }
 
 .navbar-link:hover {

@@ -65,6 +65,7 @@ const CART_FIELDS = `
   id
   checkoutUrl
   totalQuantity
+  discountCodes { code applicable }
   cost {
     subtotalAmount { amount currencyCode }
   }
@@ -101,7 +102,7 @@ function buildLine(variantId, quantity, sellingPlanId) {
   return line;
 }
 
-async function cartCreate(variantId, quantity, sellingPlanId) {
+async function cartCreate(variantId, quantity, sellingPlanId, discountCodes) {
   const query = `
     mutation cartCreate($input: CartInput!) {
       cartCreate(input: $input) {
@@ -111,6 +112,9 @@ async function cartCreate(variantId, quantity, sellingPlanId) {
     }
   `;
   const input = { lines: [buildLine(variantId, quantity, sellingPlanId)] };
+  if (discountCodes && discountCodes.length) {
+    input.discountCodes = discountCodes;
+  }
   const data = await shopifyFetch(query, { input });
   const result = data.cartCreate;
   if (result.userErrors.length) {
@@ -160,6 +164,23 @@ async function cartLinesUpdate(cartId, lineId, quantity) {
   `;
   const data = await shopifyFetch(query, { cartId, lines: [{ id: lineId, quantity }] });
   const result = data.cartLinesUpdate;
+  if (result.userErrors.length) {
+    throw new Error(result.userErrors.map((e) => e.message).join(', '));
+  }
+  return result.cart;
+}
+
+async function cartDiscountCodesUpdate(cartId, discountCodes) {
+  const query = `
+    mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]) {
+      cartDiscountCodesUpdate(cartId: $cartId, discountCodes: $discountCodes) {
+        cart { ${CART_FIELDS} }
+        userErrors { field message }
+      }
+    }
+  `;
+  const data = await shopifyFetch(query, { cartId, discountCodes });
+  const result = data.cartDiscountCodesUpdate;
   if (result.userErrors.length) {
     throw new Error(result.userErrors.map((e) => e.message).join(', '));
   }
