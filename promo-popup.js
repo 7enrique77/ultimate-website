@@ -1,10 +1,6 @@
 const PROMO_CODE = 'WELCOME40';
 const PROMO_PERCENT = 40;
 
-// TODO: replace with a real Formspree endpoint (same pattern as wholesale.js) once one exists for this list.
-// Until then submission still completes the claim flow below, it just won't notify/collect anywhere yet.
-const PROMO_FORM_ENDPOINT = '';
-
 const PROMO_CLAIMED_KEY = 'ultimate_promo_claimed';
 const PROMO_DISMISSED_KEY = 'ultimate_promo_dismissed_session';
 
@@ -75,20 +71,9 @@ if (!alreadyClaimed && !dismissedThisSession) {
     const submitBtn = popupForm.querySelector('.promo-popup-submit');
     submitBtn.disabled = true;
 
-    if (PROMO_FORM_ENDPOINT) {
-      try {
-        await fetch(PROMO_FORM_ENDPOINT, {
-          method: 'POST',
-          headers: { Accept: 'application/json' },
-          body: new URLSearchParams({
-            email,
-            offer: sessionStorage.getItem('ultimate_last_offer') || '',
-            utm_source: sessionStorage.getItem('ultimate_last_utm_source') || '',
-          }),
-        });
-      } catch (err) {
-        /* don't block the claim on the notify step failing */
-      }
+    if (typeof subscribeToShopifyNewsletter === 'function') {
+      const offer = sessionStorage.getItem('ultimate_last_offer');
+      subscribeToShopifyNewsletter(email, offer ? `newsletter, promo-${offer}` : 'newsletter, promo-welcome40');
     }
 
     localStorage.setItem(PROMO_CLAIMED_KEY, 'true');

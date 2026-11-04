@@ -221,3 +221,21 @@ if (flavorGrid) {
 
   playFlavorHint();
 }
+
+const newsletterForm = document.querySelector('.newsletter-form');
+
+if (newsletterForm) {
+  newsletterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const emailInput = newsletterForm.querySelector('.newsletter-input');
+    const submitBtn = newsletterForm.querySelector('.newsletter-submit');
+
+    if (typeof subscribeToShopifyNewsletter === 'function') {
+      subscribeToShopifyNewsletter(emailInput.value, 'newsletter');
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Subscribed!';
+    emailInput.value = '';
+  });
+}

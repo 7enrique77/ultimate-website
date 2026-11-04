@@ -23,6 +23,46 @@ function variantGid(id) {
   return `gid://shopify/ProductVariant/${id}`;
 }
 
+// Classic Shopify newsletter-signup endpoint: creates/updates a Customer with
+// accepts_marketing on, no password or Storefront token needed. Submitted via a
+// hidden iframe form-post (not fetch) since this endpoint isn't CORS-enabled for
+// cross-origin reads, and a form-post doesn't require one.
+function subscribeToShopifyNewsletter(email, tags) {
+  const frameName = 'shopify-newsletter-frame-' + Date.now();
+  const iframe = document.createElement('iframe');
+  iframe.name = frameName;
+  iframe.style.display = 'none';
+  document.body.appendChild(iframe);
+
+  const form = document.createElement('form');
+  form.action = `https://${SHOPIFY_DOMAIN}/contact#newsletter`;
+  form.method = 'POST';
+  form.target = frameName;
+  form.style.display = 'none';
+
+  const fields = {
+    form_type: 'customer',
+    utf8: '✓',
+    'contact[tags]': tags || 'newsletter',
+    'contact[email]': email,
+  };
+  Object.entries(fields).forEach(([name, value]) => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = name;
+    input.value = value;
+    form.appendChild(input);
+  });
+
+  document.body.appendChild(form);
+  form.submit();
+
+  setTimeout(() => {
+    form.remove();
+    iframe.remove();
+  }, 4000);
+}
+
 function sellingPlanGid(id) {
   return `gid://shopify/SellingPlan/${id}`;
 }
