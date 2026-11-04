@@ -23,44 +23,28 @@ function variantGid(id) {
   return `gid://shopify/ProductVariant/${id}`;
 }
 
-// Classic Shopify newsletter-signup endpoint: creates/updates a Customer with
-// accepts_marketing on, no password or Storefront token needed. Submitted via a
-// hidden iframe form-post (not fetch) since this endpoint isn't CORS-enabled for
-// cross-origin reads, and a form-post doesn't require one.
-function subscribeToShopifyNewsletter(email, tags) {
-  const frameName = 'shopify-newsletter-frame-' + Date.now();
-  const iframe = document.createElement('iframe');
-  iframe.name = frameName;
-  iframe.style.display = 'none';
-  document.body.appendChild(iframe);
-
-  const form = document.createElement('form');
-  form.action = `https://${SHOPIFY_DOMAIN}/contact#newsletter`;
-  form.method = 'POST';
-  form.target = frameName;
-  form.style.display = 'none';
-
-  const fields = {
-    form_type: 'customer',
-    utf8: '✓',
-    'contact[tags]': tags || 'newsletter',
-    'contact[email]': email,
-  };
-  Object.entries(fields).forEach(([name, value]) => {
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = name;
-    input.value = value;
-    form.appendChild(input);
-  });
-
-  document.body.appendChild(form);
-  form.submit();
-
-  setTimeout(() => {
-    form.remove();
-    iframe.remove();
-  }, 4000);
+// This store has no classic /contact route (no Online Store theme), so the only
+// native Shopify signup path is the Storefront API's customerCreate, which requires
+// a password. We generate a random one the customer never sees or needs - the point
+// is the Customer record + acceptsMarketing consent, not a login. Fails silently if
+// the email already has an account (treated as already subscribed).
+async function subscribeToShopifyNewsletter(email) {
+  const randomPassword = Array.from(crypto.getRandomValues(new Uint8Array(18)), (b) => b.toString(36)).join('').slice(0, 24) + 'Aa1!';
+  const query = `
+    mutation customerCreate($input: CustomerCreateInput!) {
+      customerCreate(input: $input) {
+        customer { id }
+        customerUserErrors { field message code }
+      }
+    }
+  `;
+  try {
+    await shopifyFetch(query, {
+      input: { email, password: randomPassword, acceptsMarketing: true },
+    });
+  } catch (err) {
+    /* already a customer, or a transient error - not worth surfacing to the visitor */
+  }
 }
 
 function sellingPlanGid(id) {

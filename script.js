@@ -231,7 +231,7 @@ if (newsletterForm) {
     const submitBtn = newsletterForm.querySelector('.newsletter-submit');
 
     if (typeof subscribeToShopifyNewsletter === 'function') {
-      subscribeToShopifyNewsletter(emailInput.value, 'newsletter');
+      subscribeToShopifyNewsletter(emailInput.value);
     }
 
     submitBtn.disabled = true;

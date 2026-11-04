@@ -72,8 +72,7 @@ if (!alreadyClaimed && !dismissedThisSession) {
     submitBtn.disabled = true;
 
     if (typeof subscribeToShopifyNewsletter === 'function') {
-      const offer = sessionStorage.getItem('ultimate_last_offer');
-      subscribeToShopifyNewsletter(email, offer ? `newsletter, promo-${offer}` : 'newsletter, promo-welcome40');
+      subscribeToShopifyNewsletter(email);
     }
 
     localStorage.setItem(PROMO_CLAIMED_KEY, 'true');
