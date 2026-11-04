@@ -92,6 +92,7 @@ const CART_FIELDS = `
   discountCodes { code applicable }
   cost {
     subtotalAmount { amount currencyCode }
+    totalAmount { amount currencyCode }
   }
   lines(first: 50) {
     edges {

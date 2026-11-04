@@ -84,8 +84,8 @@ function renderCart(cart) {
 
   cartCheckoutBtn.disabled = false;
   cartSubtotalEl.textContent = formatCartMoney(
-    cart.cost.subtotalAmount.amount,
-    cart.cost.subtotalAmount.currencyCode
+    cart.cost.totalAmount.amount,
+    cart.cost.totalAmount.currencyCode
   );
 
   cartLinesEl.innerHTML = '';
